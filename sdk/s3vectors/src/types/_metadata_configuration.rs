@@ -4,6 +4,8 @@
 /// <p>Amazon S3 Vectors is in preview release for Amazon S3 and is subject to change.</p>
 /// </note>
 /// <p>The metadata configuration for a vector index.</p>
+#[cfg_attr(all(feature = "serde-deserialize"), derive(serde::Deserialize))]
+#[cfg_attr(all(feature = "serde-serialize"), derive(serde::Serialize))]
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct MetadataConfiguration {
@@ -25,10 +27,13 @@ impl MetadataConfiguration {
 }
 
 /// A builder for [`MetadataConfiguration`](crate::types::MetadataConfiguration).
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::default::Default, ::std::fmt::Debug)]
+#[derive(
+    ::std::clone::Clone, ::std::cmp::PartialEq, ::std::default::Default, ::std::fmt::Debug,
+)]
 #[non_exhaustive]
 pub struct MetadataConfigurationBuilder {
-    pub(crate) non_filterable_metadata_keys: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
+    pub(crate) non_filterable_metadata_keys:
+        ::std::option::Option<::std::vec::Vec<::std::string::String>>,
 }
 impl MetadataConfigurationBuilder {
     /// Appends an item to `non_filterable_metadata_keys`.
@@ -36,25 +41,38 @@ impl MetadataConfigurationBuilder {
     /// To override the contents of this collection use [`set_non_filterable_metadata_keys`](Self::set_non_filterable_metadata_keys).
     ///
     /// <p>Non-filterable metadata keys allow you to enrich vectors with additional context during storage and retrieval. Unlike default metadata keys, these keys can’t be used as query filters. Non-filterable metadata keys can be retrieved but can’t be searched, queried, or filtered. You can access non-filterable metadata keys of your vectors after finding the vectors. For more information about non-filterable metadata keys, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-vectors-vectors.html">Vectors</a> and <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-vectors-limitations.html">Limitations and restrictions</a> in the <i>Amazon S3 User Guide</i>.</p>
-    pub fn non_filterable_metadata_keys(mut self, input: impl ::std::convert::Into<::std::string::String>) -> Self {
+    pub fn non_filterable_metadata_keys(
+        mut self,
+        input: impl ::std::convert::Into<::std::string::String>,
+    ) -> Self {
         let mut v = self.non_filterable_metadata_keys.unwrap_or_default();
         v.push(input.into());
         self.non_filterable_metadata_keys = ::std::option::Option::Some(v);
         self
     }
     /// <p>Non-filterable metadata keys allow you to enrich vectors with additional context during storage and retrieval. Unlike default metadata keys, these keys can’t be used as query filters. Non-filterable metadata keys can be retrieved but can’t be searched, queried, or filtered. You can access non-filterable metadata keys of your vectors after finding the vectors. For more information about non-filterable metadata keys, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-vectors-vectors.html">Vectors</a> and <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-vectors-limitations.html">Limitations and restrictions</a> in the <i>Amazon S3 User Guide</i>.</p>
-    pub fn set_non_filterable_metadata_keys(mut self, input: ::std::option::Option<::std::vec::Vec<::std::string::String>>) -> Self {
+    pub fn set_non_filterable_metadata_keys(
+        mut self,
+        input: ::std::option::Option<::std::vec::Vec<::std::string::String>>,
+    ) -> Self {
         self.non_filterable_metadata_keys = input;
         self
     }
     /// <p>Non-filterable metadata keys allow you to enrich vectors with additional context during storage and retrieval. Unlike default metadata keys, these keys can’t be used as query filters. Non-filterable metadata keys can be retrieved but can’t be searched, queried, or filtered. You can access non-filterable metadata keys of your vectors after finding the vectors. For more information about non-filterable metadata keys, see <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-vectors-vectors.html">Vectors</a> and <a href="https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-vectors-limitations.html">Limitations and restrictions</a> in the <i>Amazon S3 User Guide</i>.</p>
-    pub fn get_non_filterable_metadata_keys(&self) -> &::std::option::Option<::std::vec::Vec<::std::string::String>> {
+    pub fn get_non_filterable_metadata_keys(
+        &self,
+    ) -> &::std::option::Option<::std::vec::Vec<::std::string::String>> {
         &self.non_filterable_metadata_keys
     }
     /// Consumes the builder and constructs a [`MetadataConfiguration`](crate::types::MetadataConfiguration).
     /// This method will fail if any of the following fields are not set:
     /// - [`non_filterable_metadata_keys`](crate::types::builders::MetadataConfigurationBuilder::non_filterable_metadata_keys)
-    pub fn build(self) -> ::std::result::Result<crate::types::MetadataConfiguration, ::aws_smithy_types::error::operation::BuildError> {
+    pub fn build(
+        self,
+    ) -> ::std::result::Result<
+        crate::types::MetadataConfiguration,
+        ::aws_smithy_types::error::operation::BuildError,
+    > {
         ::std::result::Result::Ok(crate::types::MetadataConfiguration {
             non_filterable_metadata_keys: self.non_filterable_metadata_keys.ok_or_else(|| {
                 ::aws_smithy_types::error::operation::BuildError::missing_field(

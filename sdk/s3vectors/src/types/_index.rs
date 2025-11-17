@@ -4,6 +4,7 @@
 /// <p>Amazon S3 Vectors is in preview release for Amazon S3 and is subject to change.</p>
 /// </note>
 /// <p>The attributes of a vector index.</p>
+#[cfg_attr(all(feature = "serde-serialize"), derive(serde::Serialize))]
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct Index {
@@ -57,7 +58,9 @@ impl Index {
         &self.distance_metric
     }
     /// <p>The metadata configuration for the vector index.</p>
-    pub fn metadata_configuration(&self) -> ::std::option::Option<&crate::types::MetadataConfiguration> {
+    pub fn metadata_configuration(
+        &self,
+    ) -> ::std::option::Option<&crate::types::MetadataConfiguration> {
         self.metadata_configuration.as_ref()
     }
 }
@@ -69,7 +72,9 @@ impl Index {
 }
 
 /// A builder for [`Index`](crate::types::Index).
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::default::Default, ::std::fmt::Debug)]
+#[derive(
+    ::std::clone::Clone, ::std::cmp::PartialEq, ::std::default::Default, ::std::fmt::Debug,
+)]
 #[non_exhaustive]
 pub struct IndexBuilder {
     pub(crate) vector_bucket_name: ::std::option::Option<::std::string::String>,
@@ -84,12 +89,18 @@ pub struct IndexBuilder {
 impl IndexBuilder {
     /// <p>The name of the vector bucket that contains the vector index.</p>
     /// This field is required.
-    pub fn vector_bucket_name(mut self, input: impl ::std::convert::Into<::std::string::String>) -> Self {
+    pub fn vector_bucket_name(
+        mut self,
+        input: impl ::std::convert::Into<::std::string::String>,
+    ) -> Self {
         self.vector_bucket_name = ::std::option::Option::Some(input.into());
         self
     }
     /// <p>The name of the vector bucket that contains the vector index.</p>
-    pub fn set_vector_bucket_name(mut self, input: ::std::option::Option<::std::string::String>) -> Self {
+    pub fn set_vector_bucket_name(
+        mut self,
+        input: ::std::option::Option<::std::string::String>,
+    ) -> Self {
         self.vector_bucket_name = input;
         self
     }
@@ -134,7 +145,10 @@ impl IndexBuilder {
         self
     }
     /// <p>Date and time when the vector index was created.</p>
-    pub fn set_creation_time(mut self, input: ::std::option::Option<::aws_smithy_types::DateTime>) -> Self {
+    pub fn set_creation_time(
+        mut self,
+        input: ::std::option::Option<::aws_smithy_types::DateTime>,
+    ) -> Self {
         self.creation_time = input;
         self
     }
@@ -179,7 +193,10 @@ impl IndexBuilder {
         self
     }
     /// <p>The distance metric to be used for similarity search.</p>
-    pub fn set_distance_metric(mut self, input: ::std::option::Option<crate::types::DistanceMetric>) -> Self {
+    pub fn set_distance_metric(
+        mut self,
+        input: ::std::option::Option<crate::types::DistanceMetric>,
+    ) -> Self {
         self.distance_metric = input;
         self
     }
@@ -193,12 +210,17 @@ impl IndexBuilder {
         self
     }
     /// <p>The metadata configuration for the vector index.</p>
-    pub fn set_metadata_configuration(mut self, input: ::std::option::Option<crate::types::MetadataConfiguration>) -> Self {
+    pub fn set_metadata_configuration(
+        mut self,
+        input: ::std::option::Option<crate::types::MetadataConfiguration>,
+    ) -> Self {
         self.metadata_configuration = input;
         self
     }
     /// <p>The metadata configuration for the vector index.</p>
-    pub fn get_metadata_configuration(&self) -> &::std::option::Option<crate::types::MetadataConfiguration> {
+    pub fn get_metadata_configuration(
+        &self,
+    ) -> &::std::option::Option<crate::types::MetadataConfiguration> {
         &self.metadata_configuration
     }
     /// Consumes the builder and constructs a [`Index`](crate::types::Index).
@@ -210,7 +232,10 @@ impl IndexBuilder {
     /// - [`data_type`](crate::types::builders::IndexBuilder::data_type)
     /// - [`dimension`](crate::types::builders::IndexBuilder::dimension)
     /// - [`distance_metric`](crate::types::builders::IndexBuilder::distance_metric)
-    pub fn build(self) -> ::std::result::Result<crate::types::Index, ::aws_smithy_types::error::operation::BuildError> {
+    pub fn build(
+        self,
+    ) -> ::std::result::Result<crate::types::Index, ::aws_smithy_types::error::operation::BuildError>
+    {
         ::std::result::Result::Ok(crate::types::Index {
             vector_bucket_name: self.vector_bucket_name.ok_or_else(|| {
                 ::aws_smithy_types::error::operation::BuildError::missing_field(

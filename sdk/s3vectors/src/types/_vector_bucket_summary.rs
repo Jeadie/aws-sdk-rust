@@ -4,6 +4,7 @@
 /// <p>Amazon S3 Vectors is in preview release for Amazon S3 and is subject to change.</p>
 /// </note>
 /// <p>Summary information about a vector bucket.</p>
+#[cfg_attr(all(feature = "serde-serialize"), derive(serde::Serialize))]
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct VectorBucketSummary {
@@ -38,7 +39,9 @@ impl VectorBucketSummary {
 }
 
 /// A builder for [`VectorBucketSummary`](crate::types::VectorBucketSummary).
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::default::Default, ::std::fmt::Debug)]
+#[derive(
+    ::std::clone::Clone, ::std::cmp::PartialEq, ::std::default::Default, ::std::fmt::Debug,
+)]
 #[non_exhaustive]
 pub struct VectorBucketSummaryBuilder {
     pub(crate) vector_bucket_name: ::std::option::Option<::std::string::String>,
@@ -48,12 +51,18 @@ pub struct VectorBucketSummaryBuilder {
 impl VectorBucketSummaryBuilder {
     /// <p>The name of the vector bucket.</p>
     /// This field is required.
-    pub fn vector_bucket_name(mut self, input: impl ::std::convert::Into<::std::string::String>) -> Self {
+    pub fn vector_bucket_name(
+        mut self,
+        input: impl ::std::convert::Into<::std::string::String>,
+    ) -> Self {
         self.vector_bucket_name = ::std::option::Option::Some(input.into());
         self
     }
     /// <p>The name of the vector bucket.</p>
-    pub fn set_vector_bucket_name(mut self, input: ::std::option::Option<::std::string::String>) -> Self {
+    pub fn set_vector_bucket_name(
+        mut self,
+        input: ::std::option::Option<::std::string::String>,
+    ) -> Self {
         self.vector_bucket_name = input;
         self
     }
@@ -63,12 +72,18 @@ impl VectorBucketSummaryBuilder {
     }
     /// <p>The Amazon Resource Name (ARN) of the vector bucket.</p>
     /// This field is required.
-    pub fn vector_bucket_arn(mut self, input: impl ::std::convert::Into<::std::string::String>) -> Self {
+    pub fn vector_bucket_arn(
+        mut self,
+        input: impl ::std::convert::Into<::std::string::String>,
+    ) -> Self {
         self.vector_bucket_arn = ::std::option::Option::Some(input.into());
         self
     }
     /// <p>The Amazon Resource Name (ARN) of the vector bucket.</p>
-    pub fn set_vector_bucket_arn(mut self, input: ::std::option::Option<::std::string::String>) -> Self {
+    pub fn set_vector_bucket_arn(
+        mut self,
+        input: ::std::option::Option<::std::string::String>,
+    ) -> Self {
         self.vector_bucket_arn = input;
         self
     }
@@ -83,7 +98,10 @@ impl VectorBucketSummaryBuilder {
         self
     }
     /// <p>Date and time when the vector bucket was created.</p>
-    pub fn set_creation_time(mut self, input: ::std::option::Option<::aws_smithy_types::DateTime>) -> Self {
+    pub fn set_creation_time(
+        mut self,
+        input: ::std::option::Option<::aws_smithy_types::DateTime>,
+    ) -> Self {
         self.creation_time = input;
         self
     }
@@ -96,7 +114,12 @@ impl VectorBucketSummaryBuilder {
     /// - [`vector_bucket_name`](crate::types::builders::VectorBucketSummaryBuilder::vector_bucket_name)
     /// - [`vector_bucket_arn`](crate::types::builders::VectorBucketSummaryBuilder::vector_bucket_arn)
     /// - [`creation_time`](crate::types::builders::VectorBucketSummaryBuilder::creation_time)
-    pub fn build(self) -> ::std::result::Result<crate::types::VectorBucketSummary, ::aws_smithy_types::error::operation::BuildError> {
+    pub fn build(
+        self,
+    ) -> ::std::result::Result<
+        crate::types::VectorBucketSummary,
+        ::aws_smithy_types::error::operation::BuildError,
+    > {
         ::std::result::Result::Ok(crate::types::VectorBucketSummary {
             vector_bucket_name: self.vector_bucket_name.ok_or_else(|| {
                 ::aws_smithy_types::error::operation::BuildError::missing_field(

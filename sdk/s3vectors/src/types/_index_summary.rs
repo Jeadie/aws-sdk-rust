@@ -4,6 +4,7 @@
 /// <p>Amazon S3 Vectors is in preview release for Amazon S3 and is subject to change.</p>
 /// </note>
 /// <p>Summary information about a vector index.</p>
+#[cfg_attr(all(feature = "serde-serialize"), derive(serde::Serialize))]
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct IndexSummary {
@@ -45,7 +46,9 @@ impl IndexSummary {
 }
 
 /// A builder for [`IndexSummary`](crate::types::IndexSummary).
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::default::Default, ::std::fmt::Debug)]
+#[derive(
+    ::std::clone::Clone, ::std::cmp::PartialEq, ::std::default::Default, ::std::fmt::Debug,
+)]
 #[non_exhaustive]
 pub struct IndexSummaryBuilder {
     pub(crate) vector_bucket_name: ::std::option::Option<::std::string::String>,
@@ -56,12 +59,18 @@ pub struct IndexSummaryBuilder {
 impl IndexSummaryBuilder {
     /// <p>The name of the vector bucket that contains the vector index.</p>
     /// This field is required.
-    pub fn vector_bucket_name(mut self, input: impl ::std::convert::Into<::std::string::String>) -> Self {
+    pub fn vector_bucket_name(
+        mut self,
+        input: impl ::std::convert::Into<::std::string::String>,
+    ) -> Self {
         self.vector_bucket_name = ::std::option::Option::Some(input.into());
         self
     }
     /// <p>The name of the vector bucket that contains the vector index.</p>
-    pub fn set_vector_bucket_name(mut self, input: ::std::option::Option<::std::string::String>) -> Self {
+    pub fn set_vector_bucket_name(
+        mut self,
+        input: ::std::option::Option<::std::string::String>,
+    ) -> Self {
         self.vector_bucket_name = input;
         self
     }
@@ -106,7 +115,10 @@ impl IndexSummaryBuilder {
         self
     }
     /// <p>Date and time when the vector index was created.</p>
-    pub fn set_creation_time(mut self, input: ::std::option::Option<::aws_smithy_types::DateTime>) -> Self {
+    pub fn set_creation_time(
+        mut self,
+        input: ::std::option::Option<::aws_smithy_types::DateTime>,
+    ) -> Self {
         self.creation_time = input;
         self
     }
@@ -120,7 +132,12 @@ impl IndexSummaryBuilder {
     /// - [`index_name`](crate::types::builders::IndexSummaryBuilder::index_name)
     /// - [`index_arn`](crate::types::builders::IndexSummaryBuilder::index_arn)
     /// - [`creation_time`](crate::types::builders::IndexSummaryBuilder::creation_time)
-    pub fn build(self) -> ::std::result::Result<crate::types::IndexSummary, ::aws_smithy_types::error::operation::BuildError> {
+    pub fn build(
+        self,
+    ) -> ::std::result::Result<
+        crate::types::IndexSummary,
+        ::aws_smithy_types::error::operation::BuildError,
+    > {
         ::std::result::Result::Ok(crate::types::IndexSummary {
             vector_bucket_name: self.vector_bucket_name.ok_or_else(|| {
                 ::aws_smithy_types::error::operation::BuildError::missing_field(

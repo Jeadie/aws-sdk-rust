@@ -15,14 +15,8 @@ use serde;
 /// A number type that implements Javascript / JSON semantics, modeled on serde_json:
 /// <https://docs.serde.rs/src/serde_json/number.rs.html#20-22>
 #[derive(Debug, Clone, Copy, PartialEq)]
-#[cfg_attr(
-    all(aws_sdk_unstable, feature = "serde-deserialize"),
-    derive(serde::Deserialize)
-)]
-#[cfg_attr(
-    all(aws_sdk_unstable, feature = "serde-serialize"),
-    derive(serde::Serialize)
-)]
+#[cfg_attr(feature = "serde-deserialize", derive(serde::Deserialize))]
+#[cfg_attr(feature = "serde-serialize", derive(serde::Serialize))]
 #[cfg_attr(
     any(
         all(aws_sdk_unstable, feature = "serde-deserialize"),

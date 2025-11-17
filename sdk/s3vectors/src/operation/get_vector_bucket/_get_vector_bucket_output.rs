@@ -21,13 +21,16 @@ impl ::aws_types::request_id::RequestId for GetVectorBucketOutput {
 }
 impl GetVectorBucketOutput {
     /// Creates a new builder-style object to manufacture [`GetVectorBucketOutput`](crate::operation::get_vector_bucket::GetVectorBucketOutput).
-    pub fn builder() -> crate::operation::get_vector_bucket::builders::GetVectorBucketOutputBuilder {
+    pub fn builder() -> crate::operation::get_vector_bucket::builders::GetVectorBucketOutputBuilder
+    {
         crate::operation::get_vector_bucket::builders::GetVectorBucketOutputBuilder::default()
     }
 }
 
 /// A builder for [`GetVectorBucketOutput`](crate::operation::get_vector_bucket::GetVectorBucketOutput).
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::default::Default, ::std::fmt::Debug)]
+#[derive(
+    ::std::clone::Clone, ::std::cmp::PartialEq, ::std::default::Default, ::std::fmt::Debug,
+)]
 #[non_exhaustive]
 pub struct GetVectorBucketOutputBuilder {
     pub(crate) vector_bucket: ::std::option::Option<crate::types::VectorBucket>,
@@ -41,7 +44,10 @@ impl GetVectorBucketOutputBuilder {
         self
     }
     /// <p>The attributes of the vector bucket.</p>
-    pub fn set_vector_bucket(mut self, input: ::std::option::Option<crate::types::VectorBucket>) -> Self {
+    pub fn set_vector_bucket(
+        mut self,
+        input: ::std::option::Option<crate::types::VectorBucket>,
+    ) -> Self {
         self.vector_bucket = input;
         self
     }

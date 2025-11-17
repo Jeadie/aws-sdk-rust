@@ -35,3 +35,14 @@ impl serde::Serialize for UnknownVariantValue {
         serializer.serialize_str(&self.0)
     }
 }
+
+#[cfg(feature = "serde-deserialize")]
+impl<'de> serde::Deserialize<'de> for UnknownVariantValue {
+    fn deserialize<D>(deserializer: D) -> ::std::result::Result<Self, D::Error>
+    where
+        D: serde::Deserializer<'de>,
+    {
+        let s = <::std::string::String as serde::Deserialize<'de>>::deserialize(deserializer)?;
+        Ok(UnknownVariantValue(s))
+    }
+}

@@ -4,6 +4,7 @@
 /// <p>Amazon S3 Vectors is in preview release for Amazon S3 and is subject to change.</p>
 /// </note>
 /// <p>The attributes of a vector to add to a vector index.</p>
+#[cfg_attr(all(feature = "serde-deserialize"), derive(serde::Deserialize))]
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct PutInputVector {
@@ -51,7 +52,9 @@ impl PutInputVector {
 }
 
 /// A builder for [`PutInputVector`](crate::types::PutInputVector).
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::default::Default, ::std::fmt::Debug)]
+#[derive(
+    ::std::clone::Clone, ::std::cmp::PartialEq, ::std::default::Default, ::std::fmt::Debug,
+)]
 #[non_exhaustive]
 pub struct PutInputVectorBuilder {
     pub(crate) key: ::std::option::Option<::std::string::String>,
@@ -116,7 +119,10 @@ impl PutInputVectorBuilder {
         self
     }
     /// <p>Metadata about the vector. All metadata entries undergo validation to ensure they meet the format requirements for size and data types.</p>
-    pub fn set_metadata(mut self, input: ::std::option::Option<::aws_smithy_types::Document>) -> Self {
+    pub fn set_metadata(
+        mut self,
+        input: ::std::option::Option<::aws_smithy_types::Document>,
+    ) -> Self {
         self.metadata = input;
         self
     }
@@ -127,7 +133,12 @@ impl PutInputVectorBuilder {
     /// Consumes the builder and constructs a [`PutInputVector`](crate::types::PutInputVector).
     /// This method will fail if any of the following fields are not set:
     /// - [`key`](crate::types::builders::PutInputVectorBuilder::key)
-    pub fn build(self) -> ::std::result::Result<crate::types::PutInputVector, ::aws_smithy_types::error::operation::BuildError> {
+    pub fn build(
+        self,
+    ) -> ::std::result::Result<
+        crate::types::PutInputVector,
+        ::aws_smithy_types::error::operation::BuildError,
+    > {
         ::std::result::Result::Ok(crate::types::PutInputVector {
             key: self.key.ok_or_else(|| {
                 ::aws_smithy_types::error::operation::BuildError::missing_field(
@@ -138,8 +149,10 @@ impl PutInputVectorBuilder {
             data: self.data,
             metadata: self.metadata.unwrap_or_else(|| {
                 let json_bytes = br#"{}"#;
-                let mut tokens = ::aws_smithy_json::deserialize::json_token_iter(json_bytes).peekable();
-                ::aws_smithy_json::deserialize::token::expect_document(&mut tokens).expect("well formed json")
+                let mut tokens =
+                    ::aws_smithy_json::deserialize::json_token_iter(json_bytes).peekable();
+                ::aws_smithy_json::deserialize::token::expect_document(&mut tokens)
+                    .expect("well formed json")
             }),
         })
     }

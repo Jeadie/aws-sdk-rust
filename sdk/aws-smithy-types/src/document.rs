@@ -22,14 +22,8 @@ use serde;
 /// modeled using rigid types, or data that has a schema that evolves outside of the purview of a model.
 /// The serialization format of a document is an implementation detail of a protocol.
 #[derive(Clone, Debug, PartialEq)]
-#[cfg_attr(
-    all(aws_sdk_unstable, feature = "serde-serialize"),
-    derive(serde::Serialize)
-)]
-#[cfg_attr(
-    all(aws_sdk_unstable, feature = "serde-deserialize"),
-    derive(serde::Deserialize)
-)]
+#[cfg_attr(feature = "serde-serialize", derive(serde::Serialize))]
+#[cfg_attr(feature = "serde-deserialize", derive(serde::Deserialize))]
 #[cfg_attr(
     any(
         all(aws_sdk_unstable, feature = "serde-deserialize"),

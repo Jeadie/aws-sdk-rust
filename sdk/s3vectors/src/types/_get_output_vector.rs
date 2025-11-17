@@ -4,6 +4,7 @@
 /// <p>Amazon S3 Vectors is in preview release for Amazon S3 and is subject to change.</p>
 /// </note>
 /// <p>The attributes of a vector returned by the <code>GetVectors</code> operation.</p>
+#[cfg_attr(all(feature = "serde-serialize"), derive(serde::Serialize))]
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct GetOutputVector {
@@ -37,7 +38,9 @@ impl GetOutputVector {
 }
 
 /// A builder for [`GetOutputVector`](crate::types::GetOutputVector).
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::default::Default, ::std::fmt::Debug)]
+#[derive(
+    ::std::clone::Clone, ::std::cmp::PartialEq, ::std::default::Default, ::std::fmt::Debug,
+)]
 #[non_exhaustive]
 pub struct GetOutputVectorBuilder {
     pub(crate) key: ::std::option::Option<::std::string::String>,
@@ -80,7 +83,10 @@ impl GetOutputVectorBuilder {
         self
     }
     /// <p>Metadata about the vector.</p>
-    pub fn set_metadata(mut self, input: ::std::option::Option<::aws_smithy_types::Document>) -> Self {
+    pub fn set_metadata(
+        mut self,
+        input: ::std::option::Option<::aws_smithy_types::Document>,
+    ) -> Self {
         self.metadata = input;
         self
     }
@@ -91,7 +97,12 @@ impl GetOutputVectorBuilder {
     /// Consumes the builder and constructs a [`GetOutputVector`](crate::types::GetOutputVector).
     /// This method will fail if any of the following fields are not set:
     /// - [`key`](crate::types::builders::GetOutputVectorBuilder::key)
-    pub fn build(self) -> ::std::result::Result<crate::types::GetOutputVector, ::aws_smithy_types::error::operation::BuildError> {
+    pub fn build(
+        self,
+    ) -> ::std::result::Result<
+        crate::types::GetOutputVector,
+        ::aws_smithy_types::error::operation::BuildError,
+    > {
         ::std::result::Result::Ok(crate::types::GetOutputVector {
             key: self.key.ok_or_else(|| {
                 ::aws_smithy_types::error::operation::BuildError::missing_field(

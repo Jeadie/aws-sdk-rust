@@ -4,6 +4,7 @@
 /// <p>Amazon S3 Vectors is in preview release for Amazon S3 and is subject to change.</p>
 /// </note>
 /// <p>The encryption configuration for a vector bucket. By default, if you don't specify, all new vectors in Amazon S3 vector buckets use server-side encryption with Amazon S3 managed keys (SSE-S3), specifically <code>AES256</code>.</p>
+#[cfg_attr(all(feature = "serde-deserialize"), derive(serde::Deserialize))]
 #[cfg_attr(all(feature = "serde-serialize"), derive(serde::Serialize))]
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
@@ -35,7 +36,9 @@ impl EncryptionConfiguration {
 }
 
 /// A builder for [`EncryptionConfiguration`](crate::types::EncryptionConfiguration).
-#[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::default::Default, ::std::fmt::Debug)]
+#[derive(
+    ::std::clone::Clone, ::std::cmp::PartialEq, ::std::default::Default, ::std::fmt::Debug,
+)]
 #[non_exhaustive]
 pub struct EncryptionConfigurationBuilder {
     pub(crate) sse_type: ::std::option::Option<crate::types::SseType>,
@@ -79,9 +82,11 @@ impl EncryptionConfigurationBuilder {
     /// Consumes the builder and constructs a [`EncryptionConfiguration`](crate::types::EncryptionConfiguration).
     pub fn build(self) -> crate::types::EncryptionConfiguration {
         crate::types::EncryptionConfiguration {
-            sse_type: self
-                .sse_type
-                .unwrap_or("AES256".parse::<crate::types::SseType>().expect("static value validated to member")),
+            sse_type: self.sse_type.unwrap_or(
+                "AES256"
+                    .parse::<crate::types::SseType>()
+                    .expect("static value validated to member"),
+            ),
             kms_key_arn: self.kms_key_arn,
         }
     }
