@@ -4,6 +4,7 @@
 /// <p>Amazon S3 Vectors is in preview release for Amazon S3 and is subject to change.</p>
 /// </note>
 /// <p>The encryption configuration for a vector bucket. By default, if you don't specify, all new vectors in Amazon S3 vector buckets use server-side encryption with Amazon S3 managed keys (SSE-S3), specifically <code>AES256</code>.</p>
+#[cfg_attr(all(feature = "serde-serialize"), derive(serde::Serialize))]
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct EncryptionConfiguration {

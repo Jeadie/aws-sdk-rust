@@ -4,6 +4,7 @@
 /// <p>Amazon S3 Vectors is in preview release for Amazon S3 and is subject to change.</p>
 /// </note>
 /// <p>The attributes of a vector bucket.</p>
+#[cfg_attr(all(feature = "serde-serialize"), derive(serde::Serialize))]
 #[non_exhaustive]
 #[derive(::std::clone::Clone, ::std::cmp::PartialEq, ::std::fmt::Debug)]
 pub struct VectorBucket {

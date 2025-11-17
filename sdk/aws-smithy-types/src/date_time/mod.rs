@@ -53,6 +53,7 @@ const NANOS_PER_SECOND_U32: u32 = 1_000_000_000;
 /// The [`aws-smithy-types-convert`](https://crates.io/crates/aws-smithy-types-convert) crate
 /// can be used for conversions to/from other libraries, such as
 /// [`time`](https://crates.io/crates/time) or [`chrono`](https://crates.io/crates/chrono).
+#[cfg_attr(all(feature = "serde-serialize"), derive(serde::Serialize))]
 #[derive(PartialEq, Eq, Hash, Clone, Copy)]
 pub struct DateTime {
     pub(crate) seconds: i64,

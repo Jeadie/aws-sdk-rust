@@ -36,6 +36,7 @@
 /// - The inner data `UnknownVariantValue` is opaque, and no further information can be extracted.
 /// - It might inadvertently shadow other intended match arms.
 ///
+#[cfg_attr(all(feature = "serde-serialize"), derive(serde::Serialize))]
 #[allow(missing_docs)] // documentation missing in model
 #[non_exhaustive]
 #[derive(
