@@ -65,6 +65,10 @@ version = "0.2.9"
 [dependencies.regex-lite]
 version = "0.1.5"
 
+[dependencies.serde]
+version = "1"
+features = ["derive"]
+
 [dependencies.tracing]
 version = "0.1"
 [dev-dependencies.aws-config]

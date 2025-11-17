@@ -6,7 +6,13 @@
 /// This is not intended to be used directly.
 #[non_exhaustive]
 #[derive(
-    ::std::clone::Clone, ::std::cmp::Eq, ::std::cmp::Ord, ::std::cmp::PartialEq, ::std::cmp::PartialOrd, ::std::fmt::Debug, ::std::hash::Hash,
+    ::std::clone::Clone,
+    ::std::cmp::Eq,
+    ::std::cmp::Ord,
+    ::std::cmp::PartialEq,
+    ::std::cmp::PartialOrd,
+    ::std::fmt::Debug,
+    ::std::hash::Hash,
 )]
 pub struct UnknownVariantValue(pub(crate) ::std::string::String);
 impl UnknownVariantValue {
@@ -17,5 +23,15 @@ impl UnknownVariantValue {
 impl ::std::fmt::Display for UnknownVariantValue {
     fn fmt(&self, f: &mut ::std::fmt::Formatter) -> ::std::fmt::Result {
         write!(f, "{}", self.0)
+    }
+}
+
+#[cfg(feature = "serde-serialize")]
+impl serde::Serialize for UnknownVariantValue {
+    fn serialize<S>(&self, serializer: S) -> ::std::result::Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer,
+    {
+        serializer.serialize_str(&self.0)
     }
 }
